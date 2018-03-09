@@ -13,7 +13,9 @@ public class PrimeRacer {
      * @return {@link boolean} true, if n is a prime number
      */
     private static boolean isPrime(long n) {
-            for (long i=2; i< n; i++) {
+        //No even numbers will be checked for being prime
+        //Any even number is divisible by 2
+            for (long i=3; i< n; i= i+2) {
                 if (n%i == 0)
                     return false;
             }
@@ -39,8 +41,13 @@ public class PrimeRacer {
     }
 
     private long nextPrimeNumber() {
+        if (current <=2)
+            return current++;
+        //This is for the special cases 2 and 3
         while (true) {
-            current++;
+            //All primes greater than 2 are odd.
+            //No need to check even numbers
+            current+=2;
             if (isPrime(current) )
                 return current;
         }
