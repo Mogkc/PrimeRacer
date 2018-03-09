@@ -25,7 +25,7 @@ public class PrimeRacer {
             for (long i=3; i< goalpost; i= i+2) {
                 if (n%i == 0)
                     return false;
-                goalpost = n/i + 1;
+                goalpost = n/i;
             }
             return true;
     }
@@ -37,9 +37,8 @@ public class PrimeRacer {
         int k = 0;
 
         while (true) {
-            long p = racer.nextPrimeNumber();
             if (System.currentTimeMillis() < timeIsUp) {
-                System.out.println("Prime number found : " + p);
+                System.out.println("Prime number found : " + racer.nextPrimeNumber());
                 k++;
             } else {
                 break;
