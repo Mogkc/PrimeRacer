@@ -13,11 +13,19 @@ public class PrimeRacer {
      * @return {@link boolean} true, if n is a prime number
      */
     private static boolean isPrime(long n) {
-        //No even numbers will be checked for being prime
-        //Any even number is divisible by 2
-            for (long i=3; i< n; i= i+2) {
+        //No even numbers need to be checked for being prime;
+        //Any even number is divisible by 2.
+        long goalpost = n;
+        /*
+        * For a number to be divisible by something greater than a quarter of itself,
+        *   it must be able to be split evenly into fewer than four parts.
+        *   Same for all parts.
+        * Therefore we can move the goalpost
+        * */
+            for (long i=3; i< goalpost; i= i+2) {
                 if (n%i == 0)
                     return false;
+                goalpost = n/i + 1;
             }
             return true;
     }
@@ -41,8 +49,10 @@ public class PrimeRacer {
     }
 
     private long nextPrimeNumber() {
-        if (current <=2)
-            return current++;
+        if (current <=2) {
+            current++;
+            return current;
+        }
         //This is for the special cases 2 and 3
         while (true) {
             //All primes greater than 2 are odd.
