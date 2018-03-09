@@ -4,6 +4,8 @@
 public class PrimeRacer {
     private static final int NUM_OF_MILLIS = 100; // race method should run no longer than this.
 
+    private long current = 1;
+
     /**
      * A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
      *
@@ -11,7 +13,11 @@ public class PrimeRacer {
      * @return {@link boolean} true, if n is a prime number
      */
     private static boolean isPrime(long n) {
-//..
+            for (long i=2; i< n; i++) {
+                if (n%i == 0)
+                    return false;
+            }
+            return true;
     }
 
 
@@ -30,5 +36,13 @@ public class PrimeRacer {
             }
         }
         System.out.println("Primes found : " + k);
+    }
+
+    private long nextPrimeNumber() {
+        while (true) {
+            current++;
+            if (isPrime(current) )
+                return current;
+        }
     }
 }
