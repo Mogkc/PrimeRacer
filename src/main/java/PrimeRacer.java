@@ -62,4 +62,20 @@ public class PrimeRacer {
                 return current;
         }
     }
+
+    int testCounter = 1;
+    int getPrimeForChecking() {
+        if (testCounter <=2) {
+            testCounter++;
+            return testCounter;
+        }
+        //This is for the special cases 2 and 3
+        while (true) {
+            //All primes greater than 2 are odd.
+            //No need to check even numbers
+            testCounter+=2;
+            if (isPrime(testCounter) )
+                return testCounter;
+        }
+    }
 }
