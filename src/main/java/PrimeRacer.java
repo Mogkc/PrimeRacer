@@ -15,7 +15,7 @@ public class PrimeRacer {
     private static boolean isPrime(long n) {
         //No even numbers need to be checked for being prime;
         //Any even number is divisible by 2.
-        long goalpost = n;
+        long goalpost = (long) Math.sqrt(n)+1;
         /*
         * For a number to be divisible by something greater than a quarter of itself,
         *   it must be able to be split evenly into fewer than four parts.
@@ -25,7 +25,6 @@ public class PrimeRacer {
             for (long i=3; i< goalpost; i= i+2) {
                 if (n%i == 0)
                     return false;
-                goalpost = n/i;
             }
             return true;
     }
@@ -37,8 +36,9 @@ public class PrimeRacer {
         int k = 0;
 
         while (true) {
+            long p = racer.nextPrimeNumber();
             if (System.currentTimeMillis() < timeIsUp) {
-                System.out.println("Prime number found : " + racer.nextPrimeNumber());
+                System.out.println("Prime number found : " + p);
                 k++;
             } else {
                 break;
